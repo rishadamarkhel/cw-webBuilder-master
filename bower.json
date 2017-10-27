@@ -1,0 +1,29 @@
+{
+  "name": "cw-web-builder",
+  "version": "0.0.1",
+  "authors": [
+    "Gustavo Youngberg <gustavo.youngberg@cushwake.com>"
+  ],
+  "description": "Web Builder for Cushman & Wakefield",
+  "main": "gulpfile.js",
+  "license": "COPYRIGHT 2017 CUSHMAN & WAKEFIELD",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "foundation-sites": "~6.3.0",
+    "motion-ui": "~1.2.2",
+    "typographic": "^2.9.3",
+    "foundation-icon-fonts": "*",
+    "css-spaces": "^0.3.5",
+    "lightgallery": "^1.6.3"
+  },
+  "private": true,
+  "devDependencies": {
+    "bourbon": "^4.3.4"
+  }
+}

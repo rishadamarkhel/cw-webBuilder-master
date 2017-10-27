@@ -1,0 +1,143 @@
+<script>
+var map,
+    mobileMap,
+    mapContainer = $('#map');
+
+// Replace with property specific token!
+mapboxgl.accessToken = 'pk.eyJ1IjoiZ3lvdW5nYmUiLCJhIjoiY2l5NWl2aDZhMDA1aDJ2c2FwcnA3MHRidiJ9.nlqiisqhIQzogkrr62G6zQ';
+
+var map = new mapboxgl.Map({
+    container: 'map',
+    //CW-Streets Default
+    style: 'mapbox://styles/gyoungbe/cj547o9ot10en2roms6xy136z',
+    center: [ -122.2696337, 37.8112304 ],
+    bearing: 26.5,
+    pitch: 0,
+    minZoom: 10,
+    maxZoom: 18,
+    zoom: 14,
+});
+
+
+// Fly to map center
+function listenToFlyToCenter() {
+  var flyToCenter = document.getElementById('flyToCenter');
+  flyToCenter.addEventListener('click', function () {
+    map.flyTo({
+        bearing: 26.5,
+        center: [ -122.2696337, 37.8112304 ],
+        duration: 3200,
+        zoom: 16
+    });
+  });
+}
+
+
+$(document).ready(function() {
+  if (mapboxgl.supported()) {
+    initMap();
+  } else {
+    fallback();
+  }
+});
+
+
+// TODO fallback for unsupported mapboxgl
+function fallback() {
+
+};
+
+
+function initMap() {
+  // Add is-loading
+  mapContainer.addClass('is-loading');
+
+  map.addControl(new mapboxgl.NavigationControl());
+  map.dragRotate.disable();
+  map.scrollZoom.disable();
+  map.touchZoomRotate.disableRotation();
+
+  var filterGroup = document.getElementById('filter-group-list');
+  map.on('load', function() {
+
+    map.setLayoutProperty('2201Broadway-marker', 'visibility', 'none');
+
+    // Transit
+    map.setLayoutProperty('BART-r', 'visibility', 'visible');
+    map.setLayoutProperty('BART-gn', 'visibility', 'visible');
+    map.setLayoutProperty('BART-b', 'visibility', 'visible');
+    map.setLayoutProperty('BART-yellow', 'visibility', 'visible');
+    map.setLayoutProperty('BART-o', 'visibility', 'visible');
+    map.setLayoutProperty('BART-gy', 'visibility', 'visible');
+    map.setLayoutProperty('rail-label-custom', 'visibility', 'visible');
+    map.setLayoutProperty('broadway-bus-line', 'visibility', 'visible');
+    map.setLayoutProperty('broadway-bus-label', 'visibility', 'visible');
+
+    map.setLayoutProperty('building-line', 'visibility', 'visible');
+    map.setLayoutProperty('building', 'visibility', 'visible');
+
+    map.setLayoutProperty('2201Broadway-entertainment', 'visibility', 'none');
+    map.setLayoutProperty('2201Broadway-restaurants', 'visibility', 'none');
+
+    // Toggle Options if needed
+    toggleLayer([
+      '2201Broadway-entertainment'
+      ],
+      'Entertainment');
+    toggleLayer([
+      '2201Broadway-restaurants'
+      ],
+      'Restaurants');
+    function toggleLayer(ids, name) {
+      // Add Input to DOM
+      var input = document.createElement('input');
+      input.type = 'checkbox';
+      input.id = ids;
+      input.checked = false;
+      filterGroup.appendChild(input);
+
+      // Add Label to DOM
+      var label = document.createElement('label');
+      label.setAttribute('for', ids);
+      label.textContent = name;
+      filterGroup.appendChild(label);
+
+      // Create Event Listener for change
+      input.addEventListener('change', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        for (layers in ids) {
+          map.setLayoutProperty(ids[layers], 'visibility',
+              e.target.checked ? 'visible' : 'none');
+          }
+      });
+    };
+
+    // Sort Input and Label within ul < li
+    var $sort = $('ul#filter-group-list').children();
+    for(var i=0, len = $sort.length; i < len; i+=2){
+      $sort.slice(i, i+2).wrapAll('<li>')
+    };
+
+    mapContainer.removeClass('is-loading');
+    listenToFlyToCenter();
+  }); // END MAP ON;
+
+}; // END initLocation()
+
+
+
+  // If window is wider than 480px, dragPan = enabled, else dragPan = disabled
+function isDraggable(){
+  if ($(document).width() > 480) {
+    map.dragPan.enable();
+  }
+  else if ($(document).width() < 480) {
+    map.dragPan.disable();
+  }
+  else {
+    map.dragPan.disable();
+  }
+} isDraggable();
+
+</script>

@@ -1,0 +1,110 @@
+$duration: 220ms;
+$toggled-size: .75;
+$content-bg: $primary-color;
+
+.title-bar {
+  .navicon-button {
+    display: inline-block;
+    position: relative;
+    padding: 2.0625rem 1.5rem;
+    transition: $duration/2;
+    cursor: pointer;
+    user-select: none;
+    opacity: .8;
+
+    .navicon:before, .navicon:after {
+      transition: $duration/2;
+      z-index: 1;
+    }
+
+    &:hover {
+      transition: $duration;
+      opacity: 1;
+
+      .navicon:before, .navicon:after {
+        transition: $duration/2;
+      }
+
+      .navicon:before { top: 8px; }
+      .navicon:after { top: -8px; }
+    }
+
+    &:focus {
+      .navicon:before { top: 7px; }
+      .navicon:after { top: -7px; }
+    }
+
+  }
+
+  .navicon {
+    position: relative;
+    width: 1.8rem;
+    height: 3px;
+    background: $content-bg;
+    transition: $duration;
+    border-radius: 0rem;
+
+    &:before, &:after {
+      display: block;
+      content: "";
+      height: 3px;
+      width: 1.8rem;
+      background: $content-bg;
+      position: absolute;
+      z-index: -1;
+      transition: $duration $duration/2;
+      border-radius: 0rem;
+    }
+
+    &:before { top: 7px; }
+    &:after { top: -7px; }
+  }
+
+  .open {
+    &:not(.steps) .navicon:before,
+    &:not(.steps) .navicon:after {
+      top: 0 !important;
+    }
+    .navicon:before,
+    .open .navicon:after {
+      transition: $duration;
+    }
+
+    /* Minus */
+    transform: scale($toggled-size);
+
+    /* Arrows */
+    &.larr .navicon,
+    &.rarr .navicon,
+    &.uarr .navicon {
+        &:before, &:after {
+          width: 1.5rem;
+        }
+
+        &:before { transform: rotate(35deg); transform-origin: left top; }
+        &:after { transform: rotate(-35deg); transform-origin: left bottom; }
+    }
+    &.uarr { transform: scale($toggled-size) rotate(90deg); }
+
+    &.rarr .navicon {
+        &:before { transform: translate3d(1em,0,0) rotate(-35deg); transform-origin: right top; }
+        &:after { transform: translate3d(1em,0,0) rotate(35deg); transform-origin: right bottom; }
+    }
+
+    /* × and + */
+    &.plus,
+    &.x {
+      .navicon {
+        background: transparent;
+
+        &:before { transform: rotate(-45deg); }
+        &:after { transform: rotate(45deg); }
+      }
+    }
+    &.plus {
+      transform: scale($toggled-size) rotate(45deg)
+    }
+
+  }
+
+}

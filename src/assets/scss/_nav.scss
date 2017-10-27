@@ -1,0 +1,279 @@
+$topbar-bg-primary: transparent;
+$topbar-bg: transparent;
+
+$bg-transparent: transparent;
+$topbar-box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.16);
+nav#main-nav {
+  position: relative;
+  width: 100%;
+  background: $primary-color;
+  height: 125px !important;
+  font-size: small;
+
+  .nav-logo {
+
+    object#nav-logo {
+
+    }
+  }
+
+  .sticky.is-at-top {
+    &.is-stuck {
+      object#nav-logo {
+        // height: 72px;
+        // width: auto;
+        // position: relative;
+      }
+    }
+    &.is-anchored {
+      object#nav-logo {
+        // height: 264px;
+        // width: auto;
+
+        @include breakpoint(medium only){
+
+        }
+      }
+    }
+  }
+
+.sticky.is-at-top {
+  &.is-stuck{
+    a.mobile-logo {
+      padding: 0 0 0 0.8rem;
+      display: block;
+      height: 50px;
+      width: 100%;
+
+      object#mobile-logo {
+        width: 100%;
+        max-width: 43px;
+        max-height: 50px;
+        display: block;
+        left: 0;
+        padding: 0;
+      }
+      .brand {
+        width: 100%;
+        max-width: 152px;
+        min-width: 120px;
+      }
+    }
+  }
+  &.is-anchored {
+    a.mobile-logo {
+      padding: 0 0 0 0.8rem;
+      display: block;
+      height: 88px;
+      width: 100%;
+
+      object#mobile-logo {
+        width: 100%;
+        max-width: 100px;
+        max-height: 120px;
+        display: block;
+      }
+      .brand {
+        width: 100%;
+        max-width: 152px;
+        min-width: 120px;
+      }
+    }
+  }
+}
+
+
+
+  a.nav-logo {
+    display: inline-block;
+    height: auto;
+    width: auto;
+  }
+  .nav-logo .brand {
+    width: 100%;
+    max-width: 160px;
+    min-width: 120px;
+
+    &.dont-show {
+      display: none;
+    }
+  }
+
+  .top-bar,
+  .title-bar {
+    padding: 0;
+  }
+  .topbar-center-logo,
+  .top-bar {
+    background: $bg-transparent;
+    transition: background 280ms ease-in, color 280ms ease-in;
+
+    ul,
+    .menu {
+      background: $bg-transparent;
+
+      a {
+        color: $white;
+        text-transform: uppercase;
+        font-weight: 500;
+        padding: 1.6rem 0.8rem;
+      }
+
+      button.download {
+        position: relative;
+        color: $white;
+        text-transform: uppercase;
+        font-size: 13px;
+        font-family: $body-font-family;
+        padding: 1.6rem 1.2rem 1.6rem 0.8rem;
+
+        @include breakpoint(small only) {
+          font-size: inherit;
+          padding: 0.8rem 1.2rem 0.8rem 0.8rem;
+        }
+
+        @include breakpoint(medium only){
+          padding-left: 0.2rem !important;
+        }
+      }
+
+      .lg-icon {
+           &:after {
+             position: absolute;
+             display: inline-block;
+             font-family: "lg";
+             color: $white;
+             cursor: pointer;
+             font-size: 16px;
+             margin: -2px 0 -2px 2px;
+             @include transition(color 0.2s linear);
+           }
+
+          &:hover {
+              //color: $lg-toolbar-icon-hover-color;
+          }
+
+          &.lg-download {
+              &:after {
+                  content: "\e0f2";
+              }
+          }
+      }
+
+
+    }
+  }
+  .sticky.is-at-top {
+    transition: background 280ms ease-in, color 280ms ease-in, padding 280ms ease-out;
+
+    .menu {
+      transition: background 280ms ease-in, color 280ms ease-in;
+    }
+  }
+  .sticky.is-at-top.is-anchored {
+    background: $bg-transparent;
+    color: $white;
+    box-shadow: inherit;
+    padding: 1.2rem 0 !important;
+  }
+  .sticky.is-at-top.is-stuck  {
+    box-shadow: $topbar-box-shadow;
+    padding: 0;
+    background: $primary-color;
+    color: $white;
+
+    .nav-logo,
+    .menu a {
+      color: $white;
+      display: block;
+    }
+  }
+
+  @include breakpoint(small only) {
+    font-size: inherit;
+    color: $primary-color;
+
+    .sticky.is-at-top.is-stuck  {
+      background:$primary-color;
+      color: $white;
+      box-shadow: $topbar-box-shadow;
+      padding: 0;
+
+      .nav-logo,
+      .menu a {
+        color: $white;
+        padding: 0.8rem 0.4rem;
+      }
+
+      .navicon, .navicon:after, .navicon:before {
+        background: $white;
+      }
+
+      .nav-logo,
+      .menu a {
+        color: $white !important;
+        padding: 0.8rem 0.4rem;
+      }
+    }
+
+    .sticky.is-at-top.is-anchored {
+      background: $primary-color;
+      color: $white;
+      padding: 0;
+
+      .navicon, .navicon:after, .navicon:before {
+        background: $white;
+      }
+
+      .nav-logo,
+      .menu a {
+        color: $white !important;
+        padding: 0.8rem 0.4rem;
+      }
+    }
+  }
+
+  @include breakpoint(medium only) {
+    .top-bar .menu a {
+      padding: 1.6rem 0.2rem;
+    }
+  }
+
+  .top-bar-left .nav-logo{
+   flex: 1 0 auto;
+   padding-left: 0.8rem;
+
+   @include breakpoint(small only) {
+     display: none !important;
+   }
+  }
+
+ .topbar-center-logo-mobile {
+   background: $topbar-bg;
+
+   .menu-icon {
+     vertical-align: text-top;
+   }
+  }
+
+}
+.no-js {
+  @include breakpoint(small only) {
+    .top-bar {
+      display: none;
+    }
+  }
+  @include breakpoint(medium) {
+    .title-bar {
+      display: none;
+    }
+  }
+}
+@include breakpoint(small only) {
+  .top-bar {
+    display: none !important;
+    &.open {
+      display: flex !important;
+    }
+  }
+}

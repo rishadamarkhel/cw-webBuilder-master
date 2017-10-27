@@ -1,0 +1,309 @@
+@import 'bourbon'; // http://bourbon.io/
+@import 'components/cd-tabs/variables'; // colors, fonts etc...
+@import 'components/cd-tabs/mixins'; // custom mixins
+@import 'components/cd-tabs/layout'; // responsive grid and media queries
+
+/* --------------------------------
+Primary style
+-------------------------------- */
+
+
+
+#availabilities {
+
+	/* --------------------------------
+	Main components
+	-------------------------------- */
+
+	ul#gallery-availabilities {
+		transition: height 220ms ease-out;
+	}
+
+	::-webkit-scrollbar {
+    width: auto;
+    height: 10px;
+    display: none;
+	}
+
+
+	.cd-tabs {
+		position: relative;
+		width: 100%;
+		max-width: $L; // breakpoints inside partials > _layout.scss
+		max-width: 75rem;
+		margin: 2em auto;
+		@include clearfix;
+
+		&::after {
+			/* subtle gradient layer on top right - to indicate it's possible to scroll */
+			position: absolute;
+			top: 0;
+			right: 0;
+			height: $tabs-btn-height-S; // see variables inside partials > _variables.scss
+			width: 50px;
+			z-index: 1;
+			pointer-events: none;
+			@include background(linear-gradient(to left, $color-1, rgba($color-1, 0)));
+			visibility: visible;
+			opacity: 1;
+			-webkit-transition: opacity .3s 0s, visibility 0s 0s;
+			-moz-transition: opacity .3s 0s, visibility 0s 0s;
+			transition: opacity .3s 0s, visibility 0s 0s;
+
+			.no-cssgradients & {
+				display: none;
+			}
+		}
+
+		&.is-ended::after {
+			/* class added in jQuery - remove the gradient layer when it's no longer possible to scroll */
+			visibility: hidden;
+			opacity: 0;
+			-webkit-transition: opacity .3s 0s, visibility 0s .3s;
+			-moz-transition: opacity .3s 0s, visibility 0s .3s;
+			transition: opacity .3s 0s, visibility 0s .3s;
+		}
+
+		h4,
+		ul.details {
+			color: $primary-color;
+			margin-top: 0;
+			margin-bottom: 0;
+			line-height: 1.125;
+			font-weight: 700;
+		}
+
+		ul {
+			color: $primary-color;
+			margin-left: 0;
+			margin-bottom: 0;
+			height: auto;
+
+			@include MQ(S) {
+				height: auto !important;
+			}
+		}
+
+		nav {
+			overflow: auto;
+			-webkit-overflow-scrolling: touch;
+			background: $color-1;
+			box-shadow: inset 0 -2px 3px rgba(darken($color-1, 30%), .06);
+		}
+
+
+
+
+		@include MQ(M) {
+			&::after {
+				display: none;
+			}
+
+			nav {
+				position: absolute;
+				top: 0;
+				left: 0;
+				height: 100%;
+				box-shadow: inset -2px 0 3px rgba(darken($color-1, 30%), .06);
+				z-index: 1;
+			}
+		}
+
+		@include MQ(L) {
+			nav {
+				position: relative;
+				float: none;
+				background: transparent;
+				box-shadow: none;
+			}
+		}
+	}
+
+	.cd-tabs-navigation {
+		width: $tabs-btn-width-S * $tabs-btn-number; // see variables inside partials > _variables.scss
+		@include clearfix;
+
+		li {
+			float: left;
+		}
+
+		a {
+			position: relative;
+			display: block;
+			height: $tabs-btn-height-S;
+			width: $tabs-btn-width-S;
+			text-align: center;
+			@include font-size(10px);
+			@include font-smoothing;
+			font-weight: 700;
+			color: $color-5;
+			padding-top: $tabs-btn-height-S - 26px;
+			transition: color 220ms ease-in-out, background-color 220ms ease-in-out;
+
+			.no-touch &:hover,
+			&:hover {
+				color: $primary-color;
+				background-color: rgba(darken($color-1, 10%), .3);
+			}
+
+			&.selected {
+				background-color: $color-4 !important;
+				box-shadow: inset 0 2px 0 $primary-color;
+				color: $primary-color;
+				transition: color 80ms ease-out, background-color 80ms ease-out;
+			}
+
+			&::before {
+				/* icons */
+				font-family: "cw-icons";
+				position: absolute;
+				top: 12px;
+				left: 50%;
+				margin-left: -13px;
+				display: inline-block;
+				height: 24px;
+				width: 24px;
+
+				content: '\e808';
+				background-repeat: no-repeat;
+			}
+
+			&[data-content='floors2-6']::before,
+			&[data-content='floor7']::before,
+			&[data-content='floor8']::before,
+			&[data-content='floor15']::before {
+				content: '\e808';
+			}
+
+			&[data-content='floors2-6'].selected::before,
+			&[data-content='floor7'].selected::before,
+			&[data-content='floor8'].selected::before,
+			&[data-content='floor15'].selected::before  {
+				content: '\e808';
+			}
+		}
+
+		@include MQ(M) {
+			/* move the nav to the left on medium sized devices */
+			width: $tabs-btn-width-M;
+			float: left;
+
+			a {
+				height: $tabs-btn-height-M;
+				width: $tabs-btn-width-M;
+				padding-top: $tabs-btn-height-M - 40px;
+
+				&.selected {
+					box-shadow: inset 2px 0 0 $color-2;
+				}
+
+				&::before {
+					top: 20px;
+				}
+			}
+		}
+
+		@include MQ(L) {
+			/* tabbed on top on big devices */
+			width: auto;
+			background-color: $color-1;
+			box-shadow: inset 0 -2px 3px rgba(darken($color-1, 30%), .06);
+
+			a {
+				height: $tabs-btn-height-L;
+				line-height: $tabs-btn-height-L;
+				width: $tabs-btn-width-L;
+				text-align: left;
+				//@include font-size(14px);
+				font-size: 12.5px;
+				padding: 0 0.575rem 0 1.3425rem;
+
+				&.selected {
+					box-shadow: inset 0 2px 0 $color-2;
+				}
+
+				&::before {
+					top: 50%;
+					margin-top: -30px;
+					margin-left: 0;
+					left: 12px;
+				}
+			}
+		}
+	}
+
+	.cd-tabs-content {
+		background: $color-4;
+
+		li {
+			display: none;
+			padding: 1.4em;
+
+
+			&.selected {
+				display: block;
+				@include animation(cd-fade-in .5s);
+			}
+
+			p {
+				@include font-size(14px);
+				line-height: 1.6;
+				color: $black;
+				margin-bottom: 2em;
+			}
+		}
+
+		@include MQ(M) {
+			min-height: $tabs-btn-height-M * $tabs-btn-number;
+
+			li {
+				padding: 2em 2em 2em 7em;
+			}
+		}
+
+		@include MQ(L) {
+			min-height: 0;
+
+			li {
+				padding: 3em 3em 1.5em;
+
+				p {
+					@include font-size(16px);
+				}
+			}
+		}
+	}
+
+	@include keyframes(cd-fade-in) {
+		0% {
+			opacity: 0;
+		}
+
+		100% {
+			opacity: 1;
+		}
+	}
+
+}
+
+// *, *::after, *::before {
+// 	@include box-sizing(border-box);
+// }
+//
+// *::after, *::before {
+// 	content: '';
+// }
+//
+// body {
+// 	font: {
+// 		size: 100%;
+// 		family: $primary-font; // variables inside partials > _variables.scss
+// 	}
+// 	color: $color-1;
+// 	background-color: $color-3;
+// }
+//
+// a {
+// 	color: $color-2;
+// 	text-decoration: none;
+// }

@@ -1,0 +1,14 @@
+
+.cw-conference:before { content: '\e801'; } /* '' */
+.cw-cycling:before { content: '\e802'; } /* '' */
+.cw-flexible:before { content: '\e803'; } /* '' */
+.cw-floor-layout:before { content: '\e804'; } /* '' */
+.cw-location:before { content: '\e805'; } /* '' */
+.cw-tools:before { content: '\e806'; } /* '' */
+.cw-building:before { content: '\e807'; } /* '' */
+.cw-floorplan:before { content: '\e808'; } /* '' */
+.cw-app-future:before { content: '\e809'; } /* '' */
+.cw-app-gallery:before { content: '\e80a'; } /* '' */
+.cw-app-home:before { content: '\e80b'; } /* '' */
+.cw-app-location:before { content: '\e80c'; } /* '' */
+.cw-app-vitals:before { content: '\e80d'; } /* '' */

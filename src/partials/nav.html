@@ -1,0 +1,49 @@
+<nav id="main-nav" data-sticky-container style="height: 125px;">
+  <div id="sticky-container" data-sticky data-top-anchor="main-nav" data-options="marginTop:0;stickyOn:small;" style="width:100%;" class="sticky">
+
+    <!-- Small -->
+    <div class="title-bar topbar-center-logo-mobile" data-responsive-toggle="nav" data-hide-for="medium">
+      <div class="title-bar-left">
+        <div class="title-bar-title" data-magellan>
+          <a class="mobile-logo" href="#top" aria-label="Link to scroll back to top">
+            <object id="mobile-logo" class="mobile-logo" type="image/svg+xml" data="{{root}}assets/img/logo.svg" style="pointer-events:none;" aria-hidden="true">
+              <img src="{{root}}assets/img/logo.jpg" class="img-responsive brand" alt="" />
+            </object>
+          </a>
+        </div>
+      </div>
+      <div class="title-bar-right" data-magellan>
+        <button type="button" id="menu-icon" class="navicon-button uarr mb-0" data-toggle="nav" data-toggler=".open">
+          <div class="navicon"></div>
+        </button>
+      </div>
+    </div>
+    <!-- /Small -->
+
+    <!-- Medium+ -->
+    <div class="top-bar row" id="nav" data-toggle>
+      <div class="top-bar-left" data-magellan>
+        <a class="nav-logo" href="#top" aria-label="Link to scroll back to top">
+          <object id="nav-logo" type="image/svg+xml" data="{{root}}assets/img/logo.svg" style="pointer-events:none;" aria-hidden="true">
+            <img src="{{root}}assets/img/logo.jpg" class="img-responsive brand" alt="" />
+          </object>
+        </a>
+      </div>
+      <div class="top-bar-right">
+        <ul class="menu vertical medium-horizontal" data-magellan>
+          <li><a href="#property">Property</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#availabilities">Availabilities</a></li>
+          <li><a href="#location">Location</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li>
+            <form method="get" target="_blank" action="{{root}}assets/download/TEMP.pdf">
+              <button class="download lg-icon lg-download" type="submit">Flyer</button>
+            </form>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- /Medium+ -->
+  </div>
+</nav>

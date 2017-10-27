@@ -1,0 +1,59 @@
+<script>
+  $(document).ready(function() {
+
+    // INIT Animsition
+    $(".animsition").animsition({
+      inClass: 'fade-in',
+      outClass: 'fade-out',
+      inDuration: 800,
+      outDuration: 800,
+      linkElement: '.animsition-link',
+      loading: true,
+      loadingParentElement: 'body',
+      loadingClass: 'animsition-loading',
+      timeout: true,
+      timeoutCountdown: 2400,
+      onLoadEvent: true,
+      browser: [ 'animation-duration', '-webkit-animation-duration'],
+      overlay : false,
+      transition: function(url){ window.location.href = url; }
+    });
+
+    // INIT Lettering
+    $('.lettering').lettering();
+    // If you need to add more control over words and letters then comment out the above line uncomment the line below:
+    // $('.lettering').lettering('words').children('span').lettering();
+
+    // INIT Lazy loading
+    var bLazy = new Blazy({
+      selector: '.is-lazy',
+      offset: 160,
+      success: function(element){
+        var parent = element.parentNode;
+        parent.className = parent.className.replace(/\bloading\b/,'');
+      }
+      // Comment below for PRODUCTION!!
+      // error: function(ele, msg){
+      //   if(msg === 'missing'){
+      //     console.log("Looks look like " + msg + " is going on.");
+      //   }
+      //   else if(msg === 'invalid'){
+      //     console.log("Looks look like " + msg + " is going on.");
+      //   }
+      // }
+    });
+    // Use this if you need lazy loading to revalidate the page on browser/screen resize
+    // $(window).resize(function() {
+    //   if ($(document).width() > 640) {
+    //     bLazy.revalidate();
+    //   }
+    //   else if ($(document).width() < 640) {
+    //     bLazy.revalidate();
+    //   }
+    //   else {
+    //     // Just chill
+    //   }
+    // });
+
+  });
+</script>

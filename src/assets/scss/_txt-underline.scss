@@ -1,0 +1,65 @@
+$background:  $white;
+$selection:   $primary-color;
+$color-text:  $black;
+$color-link:  $primary-color;
+
+
+@mixin text-underline-crop($background) {
+  text-shadow:  0.03em 0 $background, -0.03em 0 $background,
+                0 0.03em $background, 0 -0.03em $background,
+                0.06em 0 $background, -0.06em 0 $background,
+                0.09em 0 $background, -0.09em 0 $background,
+                0.12em 0 $background, -0.12em 0 $background,
+                0.15em 0 $background, -0.15em 0 $background;
+}
+
+@mixin text-underline($color-bg, $color-text) {
+  // background-image: linear-gradient($color-text, $color-text);
+  background-image: linear-gradient($background, $background),
+                    linear-gradient($background, $background),
+                    linear-gradient($color-text, $color-text);
+  background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
+  background-repeat: no-repeat, no-repeat, repeat-x;
+  background-position: 0% 94%, 100% 94%, 0% 94%;
+}
+
+@mixin text-selection($selection) {
+  &::selection {
+    @include text-underline-crop($selection);
+
+    text-shadow: none !important;
+    background: $selection;
+  }
+
+  &::-moz-selection {
+    @include text-underline-crop($selection);
+
+    text-shadow: none !important;
+    background: $selection;
+  }
+}
+
+@mixin link-underline($background, $color-link, $selection){
+  @include text-underline-crop($background);
+  @include text-underline($background, $color-link);
+  @include text-selection($selection);
+
+  color: $color-link;
+  text-decoration: none;
+
+  *,
+  *:after,
+  &:after,
+  *:before,
+  &:before {
+    text-shadow: none !important;
+  }
+
+  &:visited {
+    color: $color-link;
+  }
+}
+
+a::selection {
+    text-shadow: none !important;
+}

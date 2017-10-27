@@ -1,0 +1,83 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <meta name="author" content="Cushman &amp; Wakefield">
+    <meta name="description" content="{{description}}">
+    <meta name="keywords" content="{{keywords}}">
+    <meta name="theme-color" content="{{theme-color}}">
+    <meta name="msapplication-navbutton-color" content="{{theme-color}}">
+    <meta name="msapplication-TileColor" content="{{theme-color}}" />
+    <meta name="application-name" content="{{short-name}}"/>
+    <meta name="msapplication-starturl" content="{{domain}}">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="57x57" href="{{root}}assets/img/favicon/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="{{root}}assets/img/favicon/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="{{root}}assets/img/favicon/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="{{root}}assets/img/favicon/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="{{root}}assets/img/favicon/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="{{root}}assets/img/favicon/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="{{root}}assets/img/favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="{{root}}assets/img/favicon/favicon-16x16.png" />
+    <meta name="msapplication-TileImage" content="{{root}}assets/img/favicon/mstile-144x144.png" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{root}}assets/css/app.css">
+
+    <link rel="preload" href="https://api.mapbox.com/mapbox-gl-js/v0.41.0/mapbox-gl.css" as="style" onload="this.rel='stylesheet'" />
+    <noscript>
+      <link rel="stylesheet" type="text/css" href="https://api.mapbox.com/mapbox-gl-js/v0.41.0/mapbox-gl.css" />
+    </noscript>
+    {{> scripts--loadcss}}
+
+    {{> scripts--google}}
+
+  </head>
+  <body>
+
+    <section class="animsition">
+      {{> location}}
+      {{> contact}}
+      {{> footer}}
+    </section>
+
+    <!-- Scripting -->
+    <script src="{{root}}assets/js/app.js"></script>
+
+    <!-- CDN Them Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/blazy@1.8.2/blazy.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lettering.js/0.6.1/jquery.lettering.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animsition/4.0.2/js/animsition.min.js"></script>
+    {{> scripts--init}}
+
+    <script src="https://api.mapbox.com/mapbox-gl-js/v0.41.0/mapbox-gl.js"></script>
+    {{> scripts--mapbox}}
+
+    <!--/*________________________________________________________*/-->
+    <!--/*77777777777777777777777777777777777777777777777777777777*/-->
+    <!--/*77777777777777777777777777777777777777777777777777777777*/-->
+    <!--/*77777777777777777777777777__|__7777777777777777777777777*/-->
+    <!--/*77777777777777777777777_|___|_____7777777777777777777777*/-->
+    <!--/*77777777777777777777|___|___|________7777777777777777777*/-->
+    <!--/*7777777777777777777_|___|___|_________|77777777777777777*/-->
+    <!--/*77777777777777777___|___|___|_________|77777777777777777*/-->
+    <!--/*77777777777777777___|___|___|_________|77777777777777777*/-->
+    <!--/*777777777777777_|___|___|___|_________|__777777777777777*/-->
+    <!--/*77777777777_|___|___|___|___|_________|_____777777777777*/-->
+    <!--/*77777777_|__|___|___|___|___|_________|________777777777*/-->
+    <!--/*777777___|__|___|___|___|___|_________|___________777777*/-->
+    <!--/*777777___|__|___|___|___|___|_________|___________777777*/-->
+    <!--/*777777___|__|___|___|___|___|_________|___________777777*/-->
+    <!--/*777777___|__|___|___|___|___|_________|___________777777*/-->
+    <!--/*777777___|__|___|___|___|___|_________|___________777777*/-->
+    <!--/*777777___|__|___|___|___|___|_________|___________777777*/-->
+    <!--/*77777777777777777777777777777777777777777777777777777777*/-->
+    <!--/*77777777777777777777777777777777777777777777777777777777*/-->
+    <!--/*__________________CUSHMAN & WAKEFIELD___________________*/-->
+    <!--/*______________San Francisco Marketing Team______________*/-->
+  </body>
+</html>
